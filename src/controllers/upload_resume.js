@@ -12,7 +12,7 @@ let systemBaseURL;
 // default upload
 export default async (req, res) => {
     systemBaseURL = getBaseURL(req.protocol, req.get('host'));
-    console.log(systemBaseURL,"SYSTEM BASE URL")
+    // console.log(systemBaseURL,"SYSTEM BASE URL")
     const { userId, is_AI = false } = req.body;
     try {
         const files = req.files;

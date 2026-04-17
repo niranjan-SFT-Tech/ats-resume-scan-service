@@ -6,7 +6,7 @@ export default async (req, res, next) => {
   if (!token) return res.status(401).json({'resultMessage': 'No token provided'});
   if (token.includes('Bearer')) token = req.header('Authorization').replace('Bearer ', '');
   try {
-    console.log('token ', token);
+    // console.log('token ', token);
 
     const [rows] = await promisePool.execute(
         'SELECT id, token, jti, user_id, expires_at FROM token_blacklist_outstandingtoken WHERE token = ? LIMIT 1',
