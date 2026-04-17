@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 
 
 export const fileAPI=async (req, res) => {  
-    const filePath = path.join(__dirname, '..', '..','var','www','html','producthrmsmanagement', 'media', 'uploads', req.params.filename);   
+    const filePath = path.join(__dirname, '..', '..', 'media', 'uploads', req.params.filename);   
     console.log('--filePath--', filePath);
     
     if (!fs.existsSync(filePath)) {
