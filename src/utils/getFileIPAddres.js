@@ -13,7 +13,7 @@ export const filePathToHttpURL = (baseURL, filePath) => {
   const mediaRoot = "/var/www/html/producthrmsmanagement/media";
   // Convert FS path → relative HTTP path
   const relativePath = filePath.replace(mediaRoot, "").replace(/\\/g, "/");
-  return `${baseURL}/media${relativePath}`;
+  return `${baseURL}/producthrmsmanagement/media${relativePath}`;
 };
 //old code
 // Convert file path to HTTP URL with IP
