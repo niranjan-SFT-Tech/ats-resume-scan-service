@@ -117,49 +117,34 @@
 import multer, { diskStorage } from "multer";
 import path from "path";
 import fs from "fs";
-
-/**
- * THIS MUST BE ABSOLUTE
- */
-const MEDIA_ROOT = "/var/www/html/producthrmsmanagement/media";
-
-/**
- * Ensure directory exists
- */
+import { media_root_path , media_sub_folder_path } from '../configs/index.js'
+const MEDIA_ROOT = media_root_path ;
+const MEDIA_SUB_PATH = media_sub_folder_path
 const ensureDirExists = (dir) => {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
 };
-
 const storage = diskStorage({
   destination: (req, _file, cb) => {
-    // Optional subfolder from request
-    const uploadPath = req.body.uploadPath || "common";
-
+    const uploadPath = req.body.uploadPath || MEDIA_SUB_PATH;
     // FINAL ABSOLUTE PATH
     const finalPath = path.join(
       MEDIA_ROOT,
       uploadPath.replace(/^\/+|\/+$/g, "")
     );
-
     ensureDirExists(finalPath);
-
     cb(null, finalPath);
   },
-
   filename: (_req, file, cb) => {
     const ext = path.extname(file.originalname);
     const name = path
       .basename(file.originalname, ext)
       .replace(/[^a-zA-Z0-9]/g, "-");
-
     cb(null, `${name}-${Date.now()}${ext}`);
   },
 });
-
 export default multer({ storage }).any();
-
 export const createUploadMiddleware = (options = {}) => {
   const {
     maxFileSize = 5 * 1024 * 1024,

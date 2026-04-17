@@ -3,17 +3,18 @@
 import { upload_dir } from '../configs/index.js';
 import path from "path";
 import url from "url";
-
+import {media_root_path , media_base_path_link} from '../configs/index.js'
 // Get baseURL
 export const getBaseURL = (protocal, host) => {
   return `${protocal}://${host}`;
 }
 
 export const filePathToHttpURL = (baseURL, filePath) => {
-  const mediaRoot = "/var/www/html/producthrmsmanagement/media";
+  const mediaRoot = media_root_path;
+  const basePath = media_base_path_link;
   // Convert FS path → relative HTTP path
   const relativePath = filePath.replace(mediaRoot, "").replace(/\\/g, "/");
-  return `${baseURL}/producthrmsmanagement/media${relativePath}`;
+  return `${baseURL}${basePath}${relativePath}`;
 };
 //old code
 // Convert file path to HTTP URL with IP
