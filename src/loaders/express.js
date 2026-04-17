@@ -58,7 +58,7 @@ export default (app) => {
   // app.use('/uploads', express.static('media/uploads'));
 
   //file api
-  app.get('/media/uploads/:filename', fileAPI);
+  app.get('/var/www/html/producthrmsmanagement/media/uploads/:filename', fileAPI);
 
   
   app.use((req, res, next) => {       

@@ -3,12 +3,14 @@ import path from 'path';
 import fs from 'fs';
 import { upload_dir } from '../configs/index.js';
 // Ensure upload directory exists
+console.log(upload_dir,"upload_dir")
 if (!fs.existsSync(upload_dir)) {
   fs.mkdirSync(upload_dir, { recursive: true }); 
 }
 // Configure disk storage
 const storage = diskStorage({
   destination: (_req, _file, cb) => {
+    console.log(upload_dir,"upload_dir-------")
     cb(null, upload_dir);
   },
   filename: (_req, file, cb) => {
@@ -17,9 +19,11 @@ const storage = diskStorage({
     const nameWithoutExt = path.basename(file.originalname, ext);
     // Remove special characters
     const cleanName = nameWithoutExt.replace(/[^a-zA-Z0-9]/g, '-');
+    console.log(cleanName,"cleanName")
     cb(null, `${cleanName}-${uniqueSuffix}${ext}`);
   },
 });
+console.log(storage,"storage")
 // Default export
 export default multer({
   storage,

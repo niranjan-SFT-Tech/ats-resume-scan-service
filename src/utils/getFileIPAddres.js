@@ -8,10 +8,13 @@ export const getBaseURL = (protocal, host) => {
 }
 
 // Convert file path to HTTP URL with IP
-export const filePathToHttpURL = (baseURL, filePath, staticRoute = upload_dir) => {   
+export const filePathToHttpURL = (baseURL, filePath, staticRoute = upload_dir) => {
+  console.log(upload_dir,"--Upload DIr")   
   const fileName = path.basename(filePath);  
   const httpURL = new url.URL(`${baseURL}`); 
   httpURL.pathname = `${staticRoute}/${fileName}`;  
+  console.log(httpURL.href,"httpURL.href")
+  console.log(httpURL.pathname,"httpURL.pathname")
   return httpURL.href;
 }
 
