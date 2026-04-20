@@ -8,7 +8,8 @@ import {
     searchResumeVoltByJobPost, 
     resumeVoltListSearchByJobPost, 
     resumeVaultScan,
-    getCountResumeVolt
+    getCountResumeVolt,
+    pdfProxy
 } from '../controllers/index.js';
 import {fileUploader, createUploadMiddleware } from '../middlewares/index.js';
 
@@ -23,5 +24,6 @@ router
     .post('/resumeSearchById', searchResumeVoltByJobPost) // short Resume Volt by job details
     .get('/get-resume-list-by-job-post', resumeVoltListSearchByJobPost) // resume list
     .put('/resume-scan-by-job-post/:jobID', resumeVaultScan) // resume list
+    .get('/pdf-proxy',pdfProxy)
 
 export default router

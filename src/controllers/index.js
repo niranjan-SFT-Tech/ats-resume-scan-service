@@ -10,3 +10,4 @@ export { getCountResumeVolt } from './resume_volt_list.js';
 export { searchResumeVoltByJobPost } from './resume_volt_list.js';
 export { resumeVoltListSearchByJobPost } from './resume_volt_list.js';
 export { resumeVaultScan } from './resume_volt_scan.js';
+export { pdfProxy } from './proxy.js'
