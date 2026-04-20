@@ -127,7 +127,7 @@ const ensureDirExists = (dir) => {
 };
 const storage = diskStorage({
   destination: (req, _file, cb) => {
-    const uploadPath = req.body.uploadPath || "common";
+    const uploadPath = req.body.uploadPath || MEDIA_SUB_PATH;
     // FINAL ABSOLUTE PATH
     const finalPath = path.join(
       MEDIA_ROOT,
