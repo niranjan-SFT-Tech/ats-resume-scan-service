@@ -68,7 +68,7 @@ export default async (req, res) => {
         if (processedFiles.length === 0) {
             return res.status(400).json({
                 success: false,
-                resultMessage: `Failed to Upload Resume, \n Please check resume content/dublicate email and try again.`,
+                resultMessage: `Resume upload failed. Please check the file content or ensure the email is not already registered, then try again.`,
                 errors: errors
             });
         }
